@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/home.dart';
+import 'package:login_register/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -71,8 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginRegister(),
-        '/home': (context) => const LoginRegister(),
+        '/': (context) => const Home(),
+        '/home': (context) => const Home(),
+        '/login': (context) => const LoginRegister(),
         //'/popular': (context) => const Popular(),
         //'/alcohol': (context) => const AlcoholPage(),
         //'/sinAlcohol': (context) => const SinAlcoholPage(),

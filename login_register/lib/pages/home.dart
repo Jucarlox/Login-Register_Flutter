@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/pages/login.dart';
 
-void main() => runApp(const LoginRegister());
+void main() => runApp(const Home());
 
-class LoginRegister extends StatelessWidget {
-  const LoginRegister({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
-  static const String _title = 'Login y Registro';
+  static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const MyStatefulWidget(),
-      ),
+      home: MyStatefulWidget(),
     );
   }
 }
@@ -27,148 +25,120 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
+  final ButtonStyle outlineButtonStyle = ElevatedButton.styleFrom(
+    primary: Colors.white,
+    minimumSize: Size(150, 70),
+    padding: EdgeInsets.symmetric(horizontal: 16),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+  );
+  final ButtonStyle outlineButtonStyle2 = OutlinedButton.styleFrom(
+    primary: Colors.black87,
+    minimumSize: Size(160, 70),
+    padding: EdgeInsets.symmetric(horizontal: 16),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+  );
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black12,
-      child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: ListView(
-            children: <Widget>[
-              Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                  child: const Text(
-                    'Hello Again!',
-                    style: TextStyle(
-                        color: Color(0xFF311B92),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 30),
+    return Scaffold(
+      backgroundColor: Colors.blueGrey[100],
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              width: 400,
+              margin: EdgeInsets.all(10),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.asset(
+                    'assets/images/home.jpg',
                   )),
-              Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                  child: const Text(
-                    'Wellcome back you´ve',
-                    style: TextStyle(fontSize: 20, color: Colors.black54),
-                  )),
-              Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(0),
-                  child: const Text(
-                    'been missed!',
-                    style: TextStyle(fontSize: 20, color: Colors.black54),
-                  )),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  child: Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: nameController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0))),
-                        labelText: 'Enter Username',
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Container(
+                width: 400,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                        text: const TextSpan(
+                            text: '  Discover your\n',
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                            children: [
+                          TextSpan(
+                              text: 'Dream job Here',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold))
+                        ])),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: RichText(
+                          text: const TextSpan(
+                              text:
+                                  '  Explore al the most exiting jobs roles\n',
+                              style: TextStyle(
+                                  color: Colors.black45, fontSize: 14),
+                              children: [
+                            TextSpan(
+                                text: 'based on your interest And study major',
+                                style: TextStyle(
+                                    color: Colors.black45, fontSize: 14))
+                          ])),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  child: Container(
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: TextField(
-                        controller: nameController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0))),
-                          labelText: 'Password',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(200, 0, 0, 0),
-                child: TextButton(
-                  onPressed: () {
-                    //forgot password screen
-                  },
-                  child: const Text(
-                    'Recovery Password',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-                child: Container(
-                    height: 57,
-                    padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: ElevatedButton(
-                        child: const Text('Sing in'),
-                        onPressed: () {
-                          print(nameController.text);
-                          print(passwordController.text);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            primary: Color(
-                          0XFFEF5350,
-                        )),
-                      ),
-                    )),
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black12,
-                    ),
-                    onPressed: () {},
-                    child: Image.asset(
-                      'assets/images/google.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-                child: Row(
-                  children: <Widget>[
-                    const Text('Not a member?', style: TextStyle(fontSize: 12)),
-                    TextButton(
-                      child: const Text(
-                        'Register now',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onPressed: () {
-                        //signup screen
-                      },
-                    )
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ),
-            ],
-          )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Container(
+                  color: Colors.grey.shade300,
+                  width: 300,
+                  height: 70,
+                  child: Row(
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          ElevatedButton(
+                            style: outlineButtonStyle,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LoginRegister()),
+                              );
+                            },
+                            child: const Text('Register',
+                                style: TextStyle(color: Colors.black)),
+                          ),
+                          Positioned(
+                            left: 140,
+                            child: OutlinedButton(
+                              style: outlineButtonStyle2,
+                              onPressed: () {},
+                              child: const Text('Sign In'),
+                            ),
+                          )
+                        ],
+                        clipBehavior: Clip.none,
+                      ),
+                    ],
+                  )),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
